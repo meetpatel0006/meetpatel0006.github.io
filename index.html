@@ -5,467 +5,177 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- =====================
-       WEBSITE TITLE (CHANGE THIS)
-       This text appears on the browser tab
+       SEO META TAGS (IMPORTANT)
+       Change description if profile changes
   ====================== -->
-  <title>Meet Patel | Mechanical Engineer</title>
+  <title>Meet Patel | Mechanical Engineer | Manufacturing & Automotive</title>
+  <meta name="description" content="Meet Patel – Mechanical Engineer with experience in manufacturing, automotive systems, lean practices, and AI-enabled quality inspection. Open to core mechanical and operations roles." />
+  <meta name="keywords" content="Mechanical Engineer, Manufacturing Engineer, Automotive, SolidWorks, ANSYS, Lean Manufacturing, Pune" />
+  <meta name="author" content="Meet Patel" />
 
-  <!-- =====================
-       META DESCRIPTION (CHANGE THIS)
-       Used for SEO / Google search preview
-  ====================== -->
-  <meta name="description" content="Meet Patel – Mechanical Engineer with experience in CAD, CAE, manufacturing, and automotive design." />
+  <!-- Open Graph (LinkedIn / WhatsApp preview) -->
+  <meta property="og:title" content="Meet Patel | Mechanical Engineer" />
+  <meta property="og:description" content="Manufacturing, Automotive, Lean & AI in Quality" />
+  <meta property="og:type" content="website" />
 
-  <!-- =====================
-       WEBSITE STYLES
-       You can change colors, fonts, spacing here
-  ====================== -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      color: #222;
-      background-color: #f9f9f9;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:#0f172a;color:#e5e7eb;line-height:1.6;transition:.4s}
+    body.light{background:#f8fafc;color:#020617}
 
-    /* =====================
-       SMOOTH ANIMATIONS
-       Fade-in on load + hover effects
-    ====================== */
+    header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    header h1{font-size:3rem;animation:fadeUp 1s}
+    header p{opacity:.85;margin-top:.5rem;animation:fadeUp 1.3s}
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    .btn{margin-top:1.2rem;padding:.8rem 1.6rem;border-radius:30px;background:#38bdf8;color:#020617;text-decoration:none;font-weight:600;transition:.3s;border:none;cursor:pointer}
+    .btn:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(56,189,248,.6)}
 
-    header, section {
-      animation: fadeUp 0.8s ease-out both;
-    }
+    .toggle{position:fixed;top:20px;right:20px;background:#38bdf8;color:#020617;border:none;padding:.6rem 1rem;border-radius:20px;cursor:pointer;font-weight:600;z-index:20}
 
-    section {
-      animation-delay: 0.1s;
-    }
+    section{padding:4rem 10%;opacity:0;transform:translateY(40px);transition:1s}
+    section.show{opacity:1;transform:none}
+    h2{color:#38bdf8;margin-bottom:1rem;font-size:2rem}
 
-    .card {
-      background: #fff;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    .card{background:#020617;padding:1.5rem;border-radius:18px;margin-bottom:1.5rem;transition:.3s}
+    body.light .card{background:#ffffff}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,.35)}
 
-    /* Hover effect on cards */
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-    }
+    /* Timeline */
+    .timeline{border-left:3px solid #38bdf8;padding-left:2rem}
+    .timeline-item{margin-bottom:2rem;position:relative}
+    .timeline-item::before{content:"";width:14px;height:14px;background:#38bdf8;border-radius:50%;position:absolute;left:-2.1rem;top:.4rem}
 
-    header {
-      background: #0f172a;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
+    /* Skills bars */
+    .skill{margin:.8rem 0}
+    .bar{height:8px;background:#1e293b;border-radius:10px;overflow:hidden}
+    .fill{height:100%;background:#38bdf8;width:0}
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+    /* Modal */
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);justify-content:center;align-items:center;z-index:30}
+    .modal-content{background:#020617;padding:2rem;border-radius:20px;max-width:800px;width:95%}
+    body.light .modal-content{background:#fff}
+    .close{float:right;font-size:22px;cursor:pointer}
 
-    header p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    /* Carousel */
+    .carousel{position:relative;overflow:hidden;margin-top:1rem}
+    .carousel img{width:100%;display:none;border-radius:12px}
+    .carousel img.active{display:block}
+    .carousel-controls{display:flex;justify-content:space-between;margin-top:.5rem}
 
-    section {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
+    /* Certificates slider */
+    .slider{display:flex;overflow-x:auto;gap:1rem;scroll-behavior:smooth}
+    .slider::-webkit-scrollbar{display:none}
+    .cert{min-width:260px}
 
-    h2 {
-      border-bottom: 2px solid #0f172a;
-      padding-bottom: 5px;
-      margin-bottom: 20px;
-    }
+    footer{text-align:center;padding:2rem;opacity:.6}
 
-    ul {
-      padding-left: 20px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-
-    /* =====================
-       PROJECT MODAL (POPUP)
-    ====================== */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .modal-content {
-      background: #fff;
-      padding: 25px;
-      max-width: 700px;
-      width: 90%;
-      border-radius: 10px;
-      animation: fadeUp 0.4s ease;
-    }
-
-    .close-modal {
-      float: right;
-      font-size: 22px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    /* =====================
-       EXPERIENCE TIMELINE
-    ====================== */
-    .timeline {
-      position: relative;
-      margin-left: 20px;
-      border-left: 3px solid #0f172a;
-      padding-left: 25px;
-    }
-
-    .timeline-item {
-      margin-bottom: 30px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -38px;
-      top: 5px;
-      width: 14px;
-      height: 14px;
-      background: #2563eb;
-      border-radius: 50%;
-    }
-
-    footer {
-      background: #0f172a;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    a {
-      color: #2563eb;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      color: #1e40af;
-    }
-  
-
-    /* =====================
-       INTERACTIVE ELEMENTS
-       Scroll reveal + button micro-interactions
-    ====================== */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.7s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Back to top button */
-    #backToTop {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #2563eb;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      font-size: 18px;
-      cursor: pointer;
-      display: none;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-
-    #backToTop:hover {
-      transform: translateY(-4px);
-      background: #1e40af;
-    }
-
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
   </style>
 </head>
 <body>
 
-<!-- =====================
-     HEADER SECTION
-     CHANGE NAME, ROLE & SUMMARY HERE
-====================== -->
-<header>
-  <h1>Meet Patel</h1> <!-- Change your name -->
-  <h3>Mechanical Engineer</h3> <!-- Change your designation -->
-  <p>
-    Mechanical Engineering graduate with hands-on experience in CAD modelling, CAE analysis, and manufacturing processes. 
-    Strong interest in automotive and core manufacturing design roles.
-  </p> <!-- Change your headline summary -->
+<button class="toggle" onclick="toggleMode()">🌙 / ☀️</button>
 
-  <!-- =====================
-       RESUME DOWNLOAD BUTTON
-       HOW TO USE:
-       1. Create a folder named "assets" in your repo
-       2. Upload your resume PDF there (example: assets/Meet_Patel_Resume.pdf)
-       3. Update the href below if filename changes
-  ====================== -->
-  <p style="margin-top:20px;">
-    <a href="assets/meet_patel_resume.pdf" target="_blank" style="background:#2563eb;color:#fff;padding:12px 20px;border-radius:6px;font-weight:bold;display:inline-block;">
-      Download Resume (PDF)
-    </a>
-  </p>
+<header>
+  <h1>Meet Patel</h1>
+  <p>Mechanical Engineer | Manufacturing | Lean | AI in Quality</p>
+  <a class="btn" href="assets/Meet_Patel_Resume.pdf" download>Download Resume</a>
+  <p style="margin-top:1rem;font-weight:600">Open to Manufacturing / Operations / Core Mechanical Roles</p>
 </header>
 
-<!-- =====================
-     ABOUT ME SECTION
-     EDIT YOUR INTRODUCTION HERE
-====================== -->
-<section class="reveal">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>
-      I am a Mechanical Engineering graduate from Vishwakarma Institute of Technology, Pune, with a strong foundation in 
-      mechanical design and analysis.
-    </p>
-    <p>
-      I enjoy solving real-world engineering problems and have worked on multiple design-focused academic and industrial 
-      projects, including a patented two-wheeler jack system.
-    </p>
-  </div>
+<section>
+  <h2>Profile</h2>
+  <div class="card">Mechanical Engineer with hands-on experience in manufacturing processes, lean tools, automotive systems, and AI-enabled quality inspection. Strong analytical mindset with focus on practical problem-solving and continuous improvement.</div>
 </section>
 
-<!-- =====================
-     SKILLS SECTION
-     ADD / REMOVE SKILLS HERE
-====================== -->
-<section class="reveal">
-  <h2>Skills</h2>
-  <div class="skills-grid">
-    <div class="card">
-      <strong>Design & Analysis</strong>
-      <ul>
-        <li>Mechanical Design</li>
-        <li>Engineering Drawings</li>
-        <li>GD&T (Basic)</li>
-        <li>FEA & Structural Analysis</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <strong>CAD / CAE Tools</strong>
-      <ul>
-        <li>SolidWorks</li>
-        <li>ANSYS Mechanical</li>
-        <li>AutoCAD (Basic)</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <strong>Manufacturing</strong>
-      <ul>
-        <li>Casting & Machining</li>
-        <li>Lean Manufacturing</li>
-        <li>Quality Inspection</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <strong>Core Skills</strong>
-      <ul>
-        <li>Problem Solving</li>
-        <li>Analytical Thinking</li>
-        <li>Cross-functional Coordination</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- =====================
-     EXPERIENCE SECTION
-     ADD NEW INTERNSHIPS / JOBS BY COPYING A CARD
-====================== -->
-<section class="reveal">
-  <h2>Experience</h2>
-
+<section>
+  <h2>Experience Timeline</h2>
   <div class="timeline">
-
-    <div class="timeline-item">
-      <div class="card">
-        <h3>In-Plant Intern – Greaves Cotton Ltd.</h3>
-        <p><em>Jan 2025 – Jun 2025 | Aurangabad</em></p>
-        <ul>
-          <li>Supported design and manufacturing analysis of crankshafts and crankcases</li>
-          <li>Applied lean manufacturing tools for waste identification</li>
-          <li>Contributed to AI-enabled visual inspection system</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="card">
-        <h3>Summer Intern – CIE Automotive India Ltd.</h3>
-        <p><em>Jun 2023 | Pune</em></p>
-        <ul>
-          <li>Exposure to casting, moulding, and pattern-making</li>
-          <li>Observed end-to-end automotive manufacturing workflow</li>
-        </ul>
-      </div>
-    </div>
-
+    <div class="timeline-item card">Greaves Cotton Ltd – In-Plant Intern<br>Crankshaft & crankcase manufacturing, TIMWOOD, Lean, AI visual inspection.</div>
+    <div class="timeline-item card">Mindforge Knowledge Solutions – Operations Coordinator (Freelance)</div>
+    <div class="timeline-item card">CIE Automotive India – Summer Intern (Foundry & Quality)</div>
   </div>
 </section>
 
-<!-- =====================
-     PROJECTS & IMAGES SECTION
-     HOW TO ADD IMAGES:
-     1. Create a folder named "images" in your GitHub repo
-     2. Upload images there (example: images/project1.png)
-     3. Update the src attribute below
-====================== -->
-<section class="reveal">
-  <h2>Project Gallery</h2>
+<section>
+  <h2>Projects</h2>
+  <div class="card"><b>Patent Published – Easy Jack Prototype</b><br><button class="btn" onclick="openModal()">View Project</button></div>
+</section>
 
-  <div class="skills-grid">
+<section>
+  <h2>Skills</h2>
+  <div class="skill">SolidWorks<div class="bar"><div class="fill" style="width:90%"></div></div></div>
+  <div class="skill">ANSYS Mechanical<div class="bar"><div class="fill" style="width:85%"></div></div></div>
+  <div class="skill">Lean Manufacturing<div class="bar"><div class="fill" style="width:80%"></div></div></div>
+  <div class="skill">Generative AI<div class="bar"><div class="fill" style="width:70%"></div></div></div>
+</section>
 
-    <div class="card">
-      <h3>Easy Jack Prototype (Patent)</h3>
-      <p><strong>Tools:</strong> SolidWorks, ANSYS</p>
-      <p>Universal jack designed for IC engine and EV two-wheelers.</p>
-      <button onclick="openModal()">View Details</button>
-      <img src="images/HJ2.png" alt="Easy Jack Prototype" width="100%">
-    </div>
-
-    <div class="card">
-      <h3>Multiplate Clutch Design</h3>
-      <p><strong>Tools:</strong> SolidWorks, ANSYS</p>
-      <p>3D modelling and finite element analysis of a multiplate clutch.</p>
-
-      <!-- ADD MORE IMAGES LIKE THIS -->
-      <!-- <img src="images/clutch.png" alt="Clutch Design" width="100%"> -->
-    </div>
-
+<section>
+  <h2>Achievements & Certifications</h2>
+  <div class="cert-slider">
+    <div class="card cert">Patent Published – Easy Jack Prototype<br><small>Application No: 202421040670</small></div>
+    <div class="card cert">Generative AI Foundation Certificate<br><small>Microsoft Collaboration</small></div>
+    <div class="card cert">Deloitte Australia<br><small>Data Analysis Job Simulation</small></div>
+    <div class="card cert">ANSYS Mechanical Certification</div>
+    <div class="card cert">SolidWorks Certification</div>
+    <div class="card cert">Lean Six Sigma White Belt</div>
+    <div class="card cert">Atmabodh Program</div>
+    <div class="card cert">SIEMENS<br><small>Project Manager Job Simulation</small></div>
   </div>
 </section>
 
-<!-- =====================
-     CONTACT SECTION
-     UPDATE EMAIL, LINKEDIN, LOCATION HERE
-====================== -->
-<section class="reveal">
+<section>
   <h2>Contact</h2>
-  <div class="card">
-    <p>Email: <a href="mailto:meetp3089@gmail.com">meetp3089@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/meet-patel-01a1192a7/" target="_blank">Meet Patel</a></p>
-    <p>Location: Pune, India</p>
-  </div>
+  <div class="card">📍 Pune, India<br>📧 meetp3089@gmail.com<br>📞 7875933938<br><a href="https://www.linkedin.com/in/meet-patel-01a1192a7/">LinkedIn</a></div>
 </section>
 
-<footer>
-  <p>© 2026 Meet Patel | Mechanical Engineer</p> <!-- Change year or name here -->
-</footer>
+<footer>© 2026 Meet Patel</footer>
 
-<!-- =====================
-     BACK TO TOP BUTTON
-     Appears after scrolling
-====================== -->
-<button id="backToTop" title="Back to top">↑</button>
-
-<!-- =====================
-     INTERACTIVITY SCRIPT
-     Handles scroll reveal + back to top
-====================== -->
-<script>
-  // Scroll reveal animation
-  const reveals = document.querySelectorAll('.reveal');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  reveals.forEach(reveal => observer.observe(reveal));
-
-  // Back to top button logic
-  const backToTop = document.getElementById('backToTop');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      backToTop.style.display = 'block';
-    } else {
-      backToTop.style.display = 'none';
-    }
-  });
-
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
-<!-- =====================
-     PROJECT MODAL CONTENT
-====================== -->
+<!-- Project Modal with Image Carousel -->
 <div class="modal" id="projectModal">
   <div class="modal-content">
-    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <span class="close" onclick="closeModal()">&times;</span>
     <h2>Easy Jack Prototype – Patent</h2>
-    <p><strong>Application No:</strong> 202421040670</p>
-    <p>This project involved complete product development from concept to validation, including CAD modelling and FEA.</p>
-    <img src="images/HJ2.png" alt="Easy Jack" width="100%">
+    <p>Universal jack for IC & EV two-wheelers designed using SolidWorks and analysed in ANSYS.</p>
+
+    <!-- HOW TO ADD IMAGES:
+         1. Upload images to /images folder
+         2. Update src below
+    -->
+    <div class="carousel">
+      <img src="images/HJ2.png" class="active" alt="Easy Jack Image 1">
+      <img src="images/HJ1.png" alt="Easy Jack Image 2">
+      <img src="images/HJ3.png" alt="Easy Jack Image 3">
+
+      <div class="carousel-controls">
+        <button class="btn" onclick="prevSlide()">◀</button>
+        <button class="btn" onclick="nextSlide()">▶</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
-  function openModal() {
-    document.getElementById('projectModal').style.display = 'flex';
-  }
+  /* Scroll reveal */
+  const sections=document.querySelectorAll('section');
+  const observer=new IntersectionObserver(e=>{e.forEach(x=>x.isIntersecting&&x.target.classList.add('show'))},{threshold:.15});
+  sections.forEach(s=>observer.observe(s));
 
-  function closeModal() {
-    document.getElementById('projectModal').style.display = 'none';
-  }
+  /* Dark / Light mode */
+  function toggleMode(){document.body.classList.toggle('light')}
+
+  /* Modal */
+  function openModal(){document.getElementById('projectModal').style.display='flex'}
+  function closeModal(){document.getElementById('projectModal').style.display='none'}
+
+  /* Carousel */
+  let current=0;
+  const slides=document.querySelectorAll('.carousel img');
+  function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active')}
+  function nextSlide(){current=(current+1)%slides.length;showSlide(current)}
+  function prevSlide(){current=(current-1+slides.length)%slides.length;showSlide(current)}
 </script>
 
 </body>
