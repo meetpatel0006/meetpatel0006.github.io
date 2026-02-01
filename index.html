@@ -81,7 +81,9 @@ body.light .skill-card{background:var(--bg-card-light);border:1px solid rgba(0,0
 .skill-fill{height:100%;background:linear-gradient(90deg,var(--primary) 0%,var(--secondary) 100%);border-radius:10px;transition:width 1.5s;width:0;box-shadow:0 0 10px rgba(6,182,212,.5)}
 .skill-card.animated .skill-fill{width:var(--skill-width)}
 .achievements-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
-.achievement-card{background:var(--bg-card-dark);padding:1.5rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,.05);transition:all .3s;text-align:center}
+.achievement-link{text-decoration:none;color:inherit;display:block;transition:transform .3s}
+.achievement-link:hover{transform:scale(1.02)}
+.achievement-card{background:var(--bg-card-dark);padding:1.5rem;border-radius:var(--radius);border:1px solid rgba(255,255,255,.05);transition:all .3s;text-align:center;cursor:pointer}
 body.light .achievement-card{background:var(--bg-card-light);border:1px solid rgba(0,0,0,.08)}
 .achievement-card:hover{transform:translateY(-5px);border-color:var(--secondary);box-shadow:0 10px 30px rgba(139,92,246,.2)}
 .achievement-icon{font-size:2.5rem;margin-bottom:1rem}
@@ -202,7 +204,6 @@ body.light footer{color:var(--text-muted-light);border-top:1px solid rgba(0,0,0,
 <div class="card project-card">
 <h3>Design of Multiplate</h3>
 <p>In this project, we performed a numerical study of a multiplate clutch of the Bajaj Pulsar(150cc). We also modelled the clutch using the SolidWorks software, and we analysed stress, strain, and deformation using the Ansys program.</p>
-
 </div>
 <!-- 💡 TO ADD MORE: Copy project card and paste here -->
 </div>
@@ -251,7 +252,7 @@ body.light footer{color:var(--text-muted-light);border-top:1px solid rgba(0,0,0,
 </div>
 </section>
 
-<!-- 🏆 ACHIEVEMENTS - EDIT EMOJI, TITLE, DETAILS -->
+<!-- 🏆 ACHIEVEMENTS - ✏️ REPLACE # WITH YOUR CERTIFICATE LINKS -->
 <section id="achievements">
 <div class="container">
 <div class="section-header">
@@ -259,48 +260,71 @@ body.light footer{color:var(--text-muted-light);border-top:1px solid rgba(0,0,0,
 <p class="section-subtitle">Recognition and continuous learning</p>
 </div>
 <div class="achievements-grid">
-<!-- ACHIEVEMENT #1 - Change emoji & text -->
+<!-- ACHIEVEMENT #1 - ✏️ Replace href="#" with your patent link -->
+<a href="#" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">🏆</div>
 <h3>Patent Published – Easy Jack Prototype</h3>
 <small>Application No: 202421040670</small>
 </div>
+</a>
+<!-- ACHIEVEMENT #2 - ✏️ Replace # with Microsoft certificate link -->
+<a href="https://drive.google.com/file/d/17f-4mT5rC9GX-JLMif7avgiaspDTvzNb/view" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">🤖</div>
-<h3>Generative AI Foundation Certificate</h3>
-<small>Microsoft Collaboration</small>
+<h3>Generative AI Foundation Certificate In Collaboration With Microsoft</h3>
+<small>UpGrad</small>
 </div>
+</a>
+<!-- ACHIEVEMENT #3 - ✏️ Replace # with Deloitte certificate link -->
+<a href="#" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">📊</div>
 <h3>Data Analysis Job Simulation</h3>
 <small>Deloitte Australia</small>
 </div>
+</a>
+<!-- ACHIEVEMENT #4 - ✏️ Replace # with ANSYS certificate link -->
+<a href="#" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">🔧</div>
 <h3>ANSYS Mechanical Certification</h3>
 <small>Professional Certification</small>
 </div>
+</a>
+<!-- ACHIEVEMENT #5 - ✏️ Replace # with SolidWorks certificate link -->
+<a href="#" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">📐</div>
 <h3>SolidWorks Certification</h3>
 <small>Professional Certification</small>
 </div>
+</a>
+<!-- ACHIEVEMENT #6 - ✏️ Replace # with Lean Six Sigma certificate link -->
+<a href="#" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">⚡</div>
 <h3>Lean Six Sigma White Belt</h3>
 <small>Process Excellence</small>
 </div>
+</a>
+<!-- ACHIEVEMENT #7 - ✏️ Replace # with Atmabodh certificate link -->
+<a href="#" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">🧘</div>
 <h3>Atmabodh Program</h3>
 <small>Personal Development</small>
 </div>
+</a>
+<!-- ACHIEVEMENT #8 - ✏️ Replace # with SIEMENS certificate link -->
+<a href="#" target="_blank" class="achievement-link">
 <div class="achievement-card">
 <div class="achievement-icon">💼</div>
 <h3>Project Manager Job Simulation</h3>
 <small>SIEMENS</small>
 </div>
-<!-- 💡 TO ADD MORE: Copy achievement card and paste here -->
+</a>
+<!-- 💡 TO ADD MORE: Copy from <a href="#"> to </a> and paste here -->
 </div>
 </div>
 </section>
@@ -396,7 +420,7 @@ const slides=document.querySelectorAll('.carousel img');
 function showSlide(i){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active')}
 function nextSlide(){currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide)}
 function prevSlide(){currentSlide=(currentSlide-1+slides.length)%slides.length;showSlide(currentSlide)}
-setInterval(nextSlide,5000); // ✏️ Change 5000 to adjust slideshow speed (in milliseconds)
+setInterval(nextSlide,5000);
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 </script>
 </body>
